@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Happy Birthday My Love ❤️</title>
+    <title>Happy Birthday Manjo </title>
     <style>
         :root {
             --bg: #fff0f6;
@@ -458,8 +458,8 @@
         <!-- Happy Birthday Song Button -->
         <button class="celebrate-btn" onclick="playSong()">🎵 Play Birthday Song 🎵</button>
 
-        <audio id="bday-audio" loop>
-            <source src="./bday.mp3" type="audio">
+        <audio id="bday-audio">
+            <source src="./bday.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
 
@@ -496,28 +496,59 @@
 
 
 
+    <button class="celebrate-btn" onclick="showLoveLetter()">💌 Read My Letter to You</button>
 
-    <!-- Love Letter Section -->
+    <!-- Love Letter Section
     <div class="card love-letter">
+        <h3 style="color: #ff3e6c;">💌 A Letter from Me to You</h3>
+        <p id="typewriter"></p>
+    </div> -->
+
+    <!-- Love Letter Section (Initially Hidden) -->
+    <div id="loveLetter" class="card love-letter" style="display: none;">
         <h3 style="color: #ff3e6c;">💌 A Letter from Me to You</h3>
         <p id="typewriter"></p>
     </div>
 
 
 
+
     <!-- Photo Gallery Card -->
-    <div class="card">
+    <!-- <div class="card">
         <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
         <div class="gallery-container">
             <div class="gallery" id="photoGallery">
-                <img src="https://via.placeholder.com/400x250?text=Photo+1" alt="Memory 1" />
-                <img src="https://via.placeholder.com/400x250?text=Photo+2" alt="Memory 2" />
-                <img src="https://via.placeholder.com/400x250?text=Photo+3" alt="Memory 3" />
+                <img src="./memories1.jpg" alt="Memory 1" />
+                <img src="memories2.jpg" alt="Memory 2" />
+                <img src="./memories3.jpg" alt="Memory 3" />
             </div>
             <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
             <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
         </div>
+    </div> -->
+    <!-- Placeholder Before Memories Section -->
+    <div id="memoriesIntro" class="card" style="text-align: center;">
+        <img src="./memocov.webp" alt="Cute gif" style="max-width: 100%; border-radius: 1rem;" />
+        <button class="celebrate-btn" onclick="showMemories()">💑 See Our Memories</button>
     </div>
+
+    <!-- Hidden Memories Section -->
+    <div id="memoriesSection" style="display: none;">
+        <div class="card">
+            <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
+            <div class="gallery-container">
+                <div class="gallery" id="photoGallery">
+                    <img src="./memories1.jpg" alt="Memory 1" />
+                    <img src="./memories2.jpg" alt="Memory 2" />
+                    <img src="./memo3.jpg" alt="Memory 3" />
+
+                </div>
+                <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
+                <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -630,11 +661,13 @@ Happy Birthday, my forever person 💝`;
         }
 
         // Start typing when page finishes loading
-        window.addEventListener("load", () => {
+        // window.addEventListener("load", () => {
+        //     typeLetter();
+        // });
+        function showLoveLetter() {
+            document.getElementById("loveLetter").style.display = "block";
             typeLetter();
-        });
-
-
+        }
 
         //heart flying on top
         // setInterval(() => {
@@ -659,6 +692,14 @@ Happy Birthday, my forever person 💝`;
 
             setTimeout(() => heart.remove(), 6000);
         }, 600);
+
+        //code for showing memories
+
+        function showMemories() {
+            document.getElementById("memoriesIntro").style.display = "none";
+            document.getElementById("memoriesSection").style.display = "block";
+        }
+
 
 
 
