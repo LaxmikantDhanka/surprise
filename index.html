@@ -15,6 +15,7 @@
         }
 
         body {
+
             margin: 0;
             background: var(--bg);
             font-family: 'Poppins', sans-serif;
@@ -205,12 +206,13 @@
 
         .gallery img {
             flex-shrink: 0;
-            width: 100vw;
+            width: 100%;
             height: auto;
             scroll-snap-align: start;
             border-radius: 1rem;
             object-fit: cover;
         }
+
 
 
         .nav-btn {
@@ -533,21 +535,38 @@
     </div>
 
     <!-- Hidden Memories Section -->
+    <!-- <div id="memoriesSection" style="display: none;">
+        <div class="card">
+            <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
+            <div class="gallery-container">
+                <div class="gallery" id="photoGallery">
+                    <img src="./memo3.jpg" alt="Memory 1" />
+                    <img src="./memories2.jpg" alt="Memory 2" />
+                    <img src="./memories1.jpg" alt="Memory 2" />
+                    <img src="./together.jpg" alt="no img">
+                    <img src="./card2.jpg" alt="no img">
+                    <img src="./mk" alt="no img">
+                </div>
+                <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
+                <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
+            </div>
+        </div>
+    </div> -->
     <div id="memoriesSection" style="display: none;">
         <div class="card">
             <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
             <div class="gallery-container">
                 <div class="gallery" id="photoGallery">
-                    <img src="./memories1.jpg" alt="Memory 1" />
-                    <img src="./memories2.jpg" alt="Memory 2" />
-                    <img src="./memo3.jpg" alt="Memory 3" />
-
+                    <img src="./card2.jpg" alt="Memory 1" />
+                    <img src="./together.jpg" alt="Memory 2" />
+                    <img src="./memory2.jpg" alt="Memory 3" />
                 </div>
                 <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
                 <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
             </div>
         </div>
     </div>
+
 
 
 
