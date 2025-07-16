@@ -189,14 +189,15 @@
             z-index: 999;
         }
 
-        .minion {
+        /* .minion {
             position: absolute;
             bottom: 10px;
             right: 10px;
             width: 120px;
             display: none;
             z-index: 5;
-        }
+        } */
+
 
         #popup {
             position: fixed;
@@ -239,6 +240,29 @@
             margin: 20px;
 
 
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a button {
+
+            display: inline-block;
+            margin: 1.5rem auto;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #41161a30;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(62, 14, 23, 0.578);
+            transition: transform 0.2s;
+            text-align: left;
+
+
         }
     </style>
 </head>
@@ -247,6 +271,10 @@
     <div class="banner">
         <h1>🎂 Happy Birthday!🎂</h1>
         <h1>Manjari</h1>
+
+
+
+
     </div>
     <div class="cake-wrapper">
         <div class="cake">
@@ -272,18 +300,26 @@
                 <div class="frosting"></div>
             </div>
         </div>
+
     </div>
 
     <button id="celebrateBtn">Celebrate</button>
     <button id="messageBtn">See My Message</button>
+    <a href="index.html" target="_self"> <button class="celebrateBtn"> Close This ❌
+        </button></a>
     <canvas id="confetti"></canvas>
     <div id="balloon-container"></div>
-    <audio id="music" src="custom-song.mp3" preload="auto"></audio>
+
+    <audio id="hbd" src="./hbd.mp3" type="audio/mpeg"></audio>
+
 
 
     <div id="popup">
-        <p>🎉 You are amazing! Here's a special wish just for you! 🎈</p>
-        <img src="https://i.imgur.com/OPJ0rV3.png" alt="Gift or Greeting">
+        <p>🎉 Happy Birthday, you beautiful human. 🥳💘
+            Somehow you get cuter, funnier, and more amazing every year — seriously, what’s your secret?
+            I hope today makes you feel even a fraction of the joy you bring into my life.
+            Now hurry up, I have hugs to give and cake to steal. 🎂 🎈</p>
+        <img src="https://i.pinimg.com/originals/1f/cc/ff/1fccff679354353d1abb49657cf6f25d.gif" alt="Gift or Greeting">
         <button id="popupClose">Close</button>
     </div>
 
@@ -292,10 +328,10 @@
         const messageBtn = document.getElementById('messageBtn');
         const balloonContainer = document.getElementById('balloon-container');
         const flames = document.querySelectorAll('.flame');
-        const music = document.getElementById('music');
+        const music = document.getElementById('hbd');
         const canvas = document.getElementById('confetti');
         const ctx = canvas.getContext('2d');
-        const minion = document.getElementById('minion');
+        // const minion = document.getElementById('minion');
         const popup = document.getElementById('popup');
         const popupClose = document.getElementById('popupClose');
 
@@ -353,9 +389,10 @@
         celebrateBtn.addEventListener('click', () => {
             flames.forEach(f => f.style.display = 'block');
             createBalloons();
-            startConfetti();
             music.play();
-            minion.style.display = 'block';
+            startConfetti();
+
+
         });
 
         messageBtn.addEventListener('click', () => {
@@ -365,6 +402,11 @@
         popupClose.addEventListener('click', () => {
             popup.style.display = 'none';
         });
+        music.play().catch(error => {
+            console.error("Audio playback failed:", error);
+        });
+
+
     </script>
 
 </body>
