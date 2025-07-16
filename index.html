@@ -61,6 +61,149 @@
             color: #d6336c;
         }
 
+        .flip-section {
+            width: 90%;
+            max-width: 400px;
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            border-radius: 1rem;
+        }
+
+        .flip-section.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front {
+            osition: absolute;
+            border: 2px white;
+            padding: 2px;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: var(--card-bg);
+            margin: 2rem auto;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+
+        }
+
+        .flip-card-back {
+            position: absolute;
+            border: 2px white;
+            padding: 2px;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+
+            background: var(--card-bg);
+            margin: 2rem auto;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+        }
+
+        .flip-card-back {
+            background-color: #ffe4ec;
+            transform: rotateY(180deg);
+            flex-direction: column;
+            color: #d6336c;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+
+        }
+
+
+        .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+
+        }
+
+        .flip-card-back p {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Sprinkles animation */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle-fall 1.2s linear forwards;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle-fall {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(150px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+
         .card {
             background: var(--card-bg);
             margin: 2rem auto;
@@ -91,6 +234,11 @@
             cursor: pointer;
             box-shadow: 0 5px 10px rgba(255, 105, 135, 0.3);
             transition: transform 0.2s;
+
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .celebrate-btn:hover {
@@ -189,21 +337,6 @@
             scroll-behavior: smooth;
         }
 
-
-
-
-
-
-        /* .gallery img {
-            flex-shrink: 0;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            scroll-snap-align: start;
-            border-radius: 1rem;
-            margin-right: 10px;
-        } */
-
         .gallery img {
             flex-shrink: 0;
             width: 100%;
@@ -238,58 +371,6 @@
             right: 5px;
         }
 
-        /* #hearts {
-            position: fixed;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-        }
-
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgb(239, 37, 70);
-            transform: rotate(45deg);
-            animation: floatUp 6s ease-in infinite;
-            opacity: 0.8;
-            border-radius: 2px;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgb(239, 37, 70);
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: -10px;
-            top: 0;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(1) rotate(45deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh) scale(0.5) rotate(45deg);
-                opacity: 0;
-            }
-        } */
 
 
         /* ❤️ Floating Hearts with Full Screen Spread */
@@ -441,8 +522,6 @@
         }
     </style>
 
-
-
 </head>
 
 
@@ -485,15 +564,39 @@
 
 
     <!-- Card 1 -->
-    <div class="card">
+    <!-- <div class="card">
         <img src="./card2.jpg" alt=" GIF">
         <p>Every moment with you is a gift. Today is yours, and I’m grateful for you 💝</p>
-    </div>
+    </div> -->
 
     <!-- Card 2: Photo -->
-    <div class="card">
+    <!-- <div class="card">
         <img src="./together.jpg" alt="Us together" />
         <p>This is one of my favorite memories of us. So many more to come. 💫</p>
+    </div> -->
+
+
+
+
+    <!-- /*cards getflip*/ -->
+    <div class="flip-section" onclick="flipWithSparkle(this)">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- Front with GIF -->
+                <div class="flip-card-front">
+                    <img src="https://i.pinimg.com/originals/3c/e8/84/3ce884bb29ad1909a2c253354497420f.gif"
+                        alt="https://meia.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif" />
+
+                </div>
+
+                <!-- Back with image + message -->
+                <div class="flip-card-back">
+                    <img src="./together.jpg" alt="Your memory" />
+                    <p>You light up my life 💖</p>
+                    <div class="sparkle-container"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -505,6 +608,12 @@
         <h3 style="color: #ff3e6c;">💌 A Letter from Me to You</h3>
         <p id="typewriter"></p>
     </div> -->
+
+
+
+
+
+
 
     <!-- Love Letter Section (Initially Hidden) -->
     <div id="loveLetter" class="card love-letter" style="display: none;">
@@ -557,9 +666,11 @@
             <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
             <div class="gallery-container">
                 <div class="gallery" id="photoGallery">
-                    <img src="./card2.jpg" alt="Memory 1" />
-                    <img src="./together.jpg" alt="Memory 2" />
-                    <img src="./memory2.jpg" alt="Memory 3" />
+                    <img src="./memories1.jpg" alt="Memory 1" />
+                    <img src="./memories2.jpg" alt="Memory 2" />
+
+                    <img src="./memo4.jpg" alt="Memory 3" />
+                    <img src="./memo5.jpg" alt="Memory 4" />
                 </div>
                 <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
                 <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
@@ -567,6 +678,13 @@
         </div>
     </div>
 
+
+
+
+    <a href="celebrate.html" target="_blank" style="font-style:">
+        <button class="celebrate-btn "> Lets Celebrate!
+        </button>
+    </a>
 
 
 
@@ -640,7 +758,7 @@
         function startAutoScroll() {
             autoScrollInterval = setInterval(() => {
                 scrollGallery(1);
-            }, 4000);
+            }, 3000);
         }
 
         // Stop auto-scroll when user interacts
@@ -718,8 +836,28 @@ Happy Birthday, my forever person 💝`;
             document.getElementById("memoriesIntro").style.display = "none";
             document.getElementById("memoriesSection").style.display = "block";
         }
+        //  flippedcards start here
 
+        function flipWithSparkle(section) {
+            // Flip the card
+            section.classList.toggle('flipped');
 
+            // Create sparkles on the back
+            const sparkleContainer = section.querySelector('.sparkle-container');
+            if (!sparkleContainer) return;
+
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 30 + '%';
+                sparkle.style.background = ['#ffd700', '#ff69b4', '#87cefa'][Math.floor(Math.random() * 3)];
+                sparkleContainer.appendChild(sparkle);
+
+                // Remove after animation
+                setTimeout(() => sparkle.remove(), 1200);
+            }
+        }
 
 
 

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Cake Surprise</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(270deg, #b38ed1, #fad0c4);
+            background-size: 800% 800%;
+            animation: backgroundShift 20s ease infinite;
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        @keyframes backgroundShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cake-wrapper {
+            position: absolute;
+            top: 40;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .cake {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .layer {
+            height: 50px;
+            background: #ffc966;
+            border-radius: 20px;
+            box-shadow: 0 4px #d2691e;
+            margin: 5px 0;
+        }
+
+        .layer-1 {
+            width: 220px;
+        }
+
+        .layer-2 {
+            width: 180px;
+        }
+
+        .layer-3 {
+            width: 150px;
+        }
+
+
+
+        .frosting {
+            position: relative;
+            top: -10px;
+            width: 100%;
+            height: 20px;
+            background: #f6a3b0;
+            border-radius: 10px 10px 0 0;
+        }
+
+
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #1976d2;
+            margin-left: 20px;
+
+            border-radius: 2px;
+        }
+
+        .candle:nth-child(1) {
+            left: 50px;
+        }
+
+        .candle:nth-child(2) {
+            left: 80px;
+        }
+
+        .candle:nth-child(3) {
+            left: 50px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 10px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #ffeb3b 0%, #f57f17 80%);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            display: none;
+            animation: flicker 0.3s infinite;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+
+        #celebrateBtn,
+        #messageBtn {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            background-color: #ec407a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 5;
+            margin: 10px;
+        }
+
+        #messageBtn {
+            top: 90%;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 55px;
+            border-radius: 50%;
+            animation: flyUp 2s ease-in forwards;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: #555;
+            transform: translateX(-50%);
+        }
+
+        @keyframes flyUp {
+            to {
+                bottom: 110%;
+                opacity: 0;
+            }
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .minion {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 120px;
+            display: none;
+            z-index: 5;
+        }
+
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
+
+        #popup img {
+            max-width: 100px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        #popupClose {
+            margin-top: 10px;
+            background: #ec407a;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .banner {
+
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 3rem;
+            background: linear-gradient(to right, #ff6a00c8, #ee0978a2);
+
+            box-shadow: 0 4px 10px #2118180d;
+            margin: 20px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <h1>🎂 Happy Birthday!🎂</h1>
+        <h1>Manjari</h1>
+    </div>
+    <div class="cake-wrapper">
+        <div class="cake">
+            <div class="layer layer-4">
+                <div class="frosting"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="layer layer-3">
+                <div class="frosting"></div>
+            </div>
+            <div class="layer layer-2">
+                <div class="frosting"></div>
+            </div>
+            <div class="layer layer-1">
+                <div class="frosting"></div>
+            </div>
+        </div>
+    </div>
+
+    <button id="celebrateBtn">Celebrate</button>
+    <button id="messageBtn">See My Message</button>
+    <canvas id="confetti"></canvas>
+    <div id="balloon-container"></div>
+    <audio id="music" src="custom-song.mp3" preload="auto"></audio>
+
+
+    <div id="popup">
+        <p>🎉 You are amazing! Here's a special wish just for you! 🎈</p>
+        <img src="https://i.imgur.com/OPJ0rV3.png" alt="Gift or Greeting">
+        <button id="popupClose">Close</button>
+    </div>
+
+    <script>
+        const celebrateBtn = document.getElementById('celebrateBtn');
+        const messageBtn = document.getElementById('messageBtn');
+        const balloonContainer = document.getElementById('balloon-container');
+        const flames = document.querySelectorAll('.flame');
+        const music = document.getElementById('music');
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        const minion = document.getElementById('minion');
+        const popup = document.getElementById('popup');
+        const popupClose = document.getElementById('popupClose');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const confetti = Array.from({ length: 100 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 6 + 4,
+            d: Math.random() * 10,
+            color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+            tilt: Math.random() * 10 - 5
+        }));
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach(c => {
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = c.color;
+                ctx.moveTo(c.x + c.tilt, c.y);
+                ctx.lineTo(c.x + c.tilt + c.r, c.y + c.r);
+                ctx.stroke();
+            });
+            confetti.forEach(c => {
+                c.y += Math.cos(c.d) + 2;
+                c.x += Math.sin(c.d);
+                if (c.y > canvas.height) {
+                    c.y = -10;
+                    c.x = Math.random() * canvas.width;
+                }
+            });
+        }
+
+        function startConfetti() {
+            setInterval(drawConfetti, 20)
+            setTimeout(() => {
+
+            }, timeout);
+        }
+
+        function createBalloons() {
+            const colors = ['#f44336', '#4caf50', '#2196f3', '#ff9800', '#9c27b0', '#00bcd4', '#ff5722', '#8bc34a'];
+            for (let i = 0; i < 12; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = `${Math.random() * window.innerWidth}px`;
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                balloonContainer.appendChild(balloon);
+            }
+            setTimeout(() => balloonContainer.innerHTML = '', 2500);
+        }
+
+        celebrateBtn.addEventListener('click', () => {
+            flames.forEach(f => f.style.display = 'block');
+            createBalloons();
+            startConfetti();
+            music.play();
+            minion.style.display = 'block';
+        });
+
+        messageBtn.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
+
+</body>
+
+</html>
