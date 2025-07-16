@@ -93,8 +93,10 @@
 
     /* Cake ------------------------------------------------------------ */
     .cake-wrapper {
+
       position: relative;
-      margin-top: 2.5rem;
+      margin-top: 10rem;
+
       /* vertical spacing below banner */
       width: 100%;
       display: flex;
@@ -109,7 +111,7 @@
       flex-direction: column-reverse;
       /* bottom layer first visually bottom */
       align-items: center;
-      gap: 5px;
+      gap: 2px;
       pointer-events: none;
     }
 
@@ -123,9 +125,7 @@
     }
 
     /* Responsive widths via % of base scale */
-    .layer-1 {
-      width: var(--cake-scale);
-    }
+
 
     .layer-2 {
       width: calc(var(--cake-scale) * 0.82);
@@ -281,6 +281,7 @@
       transition: transform 0.15s ease;
       text-align: center;
       text-decoration: none;
+      font-family: 'Times New Roman', Times, serif;
     }
 
     .controls button:active,
