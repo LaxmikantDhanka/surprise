@@ -61,148 +61,78 @@
             color: #d6336c;
         }
 
-        .flip-section {
-            width: 90%;
-            max-width: 400px;
-            margin: 2rem auto;
-            perspective: 1000px;
+        /* flip card section  */
+        .flip-card-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            /* adjust based on your layout */
+            width: 100%;
+
         }
 
         .flip-card {
-            width: 100%;
-            height: 250px;
+
+            height: 300px;
+            perspective: 1000px;
             cursor: pointer;
+            padding: 5%;
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            margin: 2rem auto;
+            margin-bottom: 0px;
+
         }
 
         .flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 1s;
+            transition: transform 0.8s;
             transform-style: preserve-3d;
-            border-radius: 1rem;
         }
 
-        .flip-section.flipped .flip-card-inner {
+        .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            backface-visibility: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
         .flip-card-front {
-            osition: absolute;
-            border: 2px white;
-            padding: 2px;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 1rem;
+            background: white;
             display: flex;
-            justify-content: center;
             align-items: center;
-            overflow: hidden;
-            background: var(--card-bg);
-            margin: 2rem auto;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 480px;
-            text-align: center;
-
+            justify-content: center;
         }
 
         .flip-card-back {
-            position: absolute;
-            border: 2px white;
-            padding: 2px;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-
-
-            background: var(--card-bg);
-            margin: 2rem auto;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 480px;
-            text-align: center;
-        }
-
-        .flip-card-back {
-            background-color: #ffe4ec;
+            background: rgb(250, 218, 224);
             transform: rotateY(180deg);
-            flex-direction: column;
-            color: #d6336c;
-            text-align: center;
-            padding: 1rem;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+
         }
 
-
-
-        .flip-card-front img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        img {
             max-width: 100%;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
-
+            max-height: 100%;
+            border-radius: 20px;
         }
 
-
-        .flip-card-back img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            max-width: 100%;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            margin-top: 2rem;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
-
-        }
-
-        .flip-card-back p {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            margin-top: 0.5rem;
-        }
-
-        /* Sprinkles animation */
-        .sparkle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: gold;
-            border-radius: 50%;
-            animation: sparkle-fall 1.2s linear forwards;
-            opacity: 0.8;
-            pointer-events: none;
-        }
-
-        @keyframes sparkle-fall {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(150px) scale(0.5);
-                opacity: 0;
-            }
-        }
-
+        /* flip card end here */
 
         .card {
             background: var(--card-bg);
@@ -291,6 +221,21 @@
             white-space: pre-line;
             font-family: 'Poppins', sans-serif;
             box-shadow: 0 0 15px rgba(255, 192, 203, 0.3);
+        }
+
+        p {
+            /* display: block; */
+            margin: 1.5rem auto;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #ec96c1;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(255, 105, 135, 0.3);
+            transition: transform 0.2s;
+            width: 60%
         }
 
 
@@ -466,18 +411,6 @@
                 padding: 0.8rem 1.2rem;
             }
 
-            /* .popup {
-                width: 80%;
-                padding: 4px;
-                top: 1%;
-                bottom: 2%;
-            }
-
-            .popup video {
-                width: 100% !important;
-            } */
-
-
 
             .popup {
                 display: none;
@@ -577,23 +510,32 @@
 
 
 
+    <div class="flip-card-wrapper">
 
-    <!-- /*cards getflip*/ -->
-    <div class="flip-section" onclick="flipWithSparkle(this)">
-        <div class="flip-card">
+        <div class="flip-card" id="card">
             <div class="flip-card-inner">
-                <!-- Front with GIF -->
                 <div class="flip-card-front">
                     <img src="https://i.pinimg.com/originals/3c/e8/84/3ce884bb29ad1909a2c253354497420f.gif"
-                        alt="https://meia.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif" />
+                        alt="Front Side">
+                </div>
+                <div class="flip-card-back">
+                    <img src="./card2.jpg " alt="Back Side">
 
                 </div>
+            </div>
+        </div>
+    </div>
+    <p style="text-align: center;"> This is one of my favorite memories of us 💝</p>
+    <div class="flip-card-wrapper">
 
-                <!-- Back with image + message -->
+        <div class="flip-card" id="card2">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="  https://media.tenor.com/AJ8mQy9dvyQAAAAC/kitty-love.gif  " alt="Front Side">
+                </div>
                 <div class="flip-card-back">
-                    <img src="./together.jpg" alt="Your memory" />
-                    <p>You light up my life 💖</p>
-                    <div class="sparkle-container"></div>
+                    <img src="./together.jpg" alt="Back Side">
+
                 </div>
             </div>
         </div>
@@ -601,16 +543,9 @@
 
 
 
+
+
     <button class="celebrate-btn" onclick="showLoveLetter()">💌 Read My Letter to You</button>
-
-    <!-- Love Letter Section
-    <div class="card love-letter">
-        <h3 style="color: #ff3e6c;">💌 A Letter from Me to You</h3>
-        <p id="typewriter"></p>
-    </div> -->
-
-
-
 
 
 
@@ -623,20 +558,6 @@
 
 
 
-
-    <!-- Photo Gallery Card -->
-    <!-- <div class="card">
-        <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
-        <div class="gallery-container">
-            <div class="gallery" id="photoGallery">
-                <img src="./memories1.jpg" alt="Memory 1" />
-                <img src="memories2.jpg" alt="Memory 2" />
-                <img src="./memories3.jpg" alt="Memory 3" />
-            </div>
-            <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
-            <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
-        </div>
-    </div> -->
     <!-- Placeholder Before Memories Section -->
     <div id="memoriesIntro" class="card" style="text-align: center;">
         <img src="./memocov.webp" alt="Cute gif" style="max-width: 100%; border-radius: 1rem;" />
@@ -644,23 +565,7 @@
     </div>
 
     <!-- Hidden Memories Section -->
-    <!-- <div id="memoriesSection" style="display: none;">
-        <div class="card">
-            <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
-            <div class="gallery-container">
-                <div class="gallery" id="photoGallery">
-                    <img src="./memo3.jpg" alt="Memory 1" />
-                    <img src="./memories2.jpg" alt="Memory 2" />
-                    <img src="./memories1.jpg" alt="Memory 2" />
-                    <img src="./together.jpg" alt="no img">
-                    <img src="./card2.jpg" alt="no img">
-                    <img src="./mk" alt="no img">
-                </div>
-                <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
-                <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
-            </div>
-        </div>
-    </div> -->
+
     <div id="memoriesSection" style="display: none;">
         <div class="card">
             <h3 style="color: #ff3e6c;">💑 Our Memories</h3>
@@ -671,6 +576,7 @@
 
                     <img src="./memo4.jpg" alt="Memory 3" />
                     <img src="./memo5.jpg" alt="Memory 4" />
+
                 </div>
                 <button class="nav-btn left" onclick="scrollGallery(-1)">←</button>
                 <button class="nav-btn right" onclick="scrollGallery(1)">→</button>
@@ -737,11 +643,11 @@
         }, 250);
 
 
-        // function scrollGallery(direction) {
-        //     const gallery = document.getElementById('photoGallery');
-        //     const scrollAmount = gallery.clientWidth;
-        //     gallery.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        // }
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('photoGallery');
+            const scrollAmount = gallery.clientWidth;
+            gallery.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
         let autoScrollInterval;
         let currentIndex = 0;
 
@@ -777,8 +683,33 @@
 
 
 
+        //         const message = `Hey my love 💖,
 
-        const message = `Hey my love 💖,
+        // You bring light into my world in ways I never knew possible. Every smile, every hug, every little moment with you — it's pure magic. 🌟
+
+        // On your special day, I want you to know how deeply I cherish you. I am grateful for every memory, and excited for all the ones we'll make together.
+
+        // Happy Birthday, my forever person 💝`;
+
+        //         let index = 0;
+        //         const speed = 40; // typing speed in ms
+
+        //         function typeLetter() {
+        //             if (index < message.length) {
+        //                 document.getElementById("typewriter").innerHTML += message.charAt(index);
+        //                 index++;
+        //                 setTimeout(typeLetter, speed);
+        //             }
+        //         }
+
+        //         function showLoveLetter() {
+        //             document.getElementById("loveLetter").style.display = "block";
+        //             typeLetter();
+
+        //         }
+
+
+        const message = `Hey my love 💖, 
 
 You bring light into my world in ways I never knew possible. Every smile, every hug, every little moment with you — it's pure magic. 🌟
 
@@ -794,17 +725,24 @@ Happy Birthday, my forever person 💝`;
                 document.getElementById("typewriter").innerHTML += message.charAt(index);
                 index++;
                 setTimeout(typeLetter, speed);
+            } else {
+                // Typing finished — hide letter after 4 seconds
+                setTimeout(() => {
+                    document.getElementById("loveLetter").style.display = "none";
+                    // Optional: reset for next time
+                    document.getElementById("typewriter").innerHTML = "";
+                    index = 0;
+                }, 4000);
             }
         }
 
-        // Start typing when page finishes loading
-        // window.addEventListener("load", () => {
-        //     typeLetter();
-        // });
         function showLoveLetter() {
             document.getElementById("loveLetter").style.display = "block";
+            document.getElementById("typewriter").innerHTML = ""; // clear previous
+            index = 0; // reset index
             typeLetter();
         }
+
 
         //heart flying on top
         // setInterval(() => {
@@ -858,6 +796,28 @@ Happy Birthday, my forever person 💝`;
                 setTimeout(() => sparkle.remove(), 1200);
             }
         }
+
+        //    flip card section
+        // const card = document.getElementById('card');
+
+        // card.addEventListener('click', () => {
+        //     card.classList.add('flipped');
+
+        //     setTimeout(() => {
+        //         card.classList.remove('flipped');
+        //     }, 4000); // 4 seconds
+        // });
+
+        const cards = document.querySelectorAll('.flip-card');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.add('flipped');
+                setTimeout(() => {
+                    card.classList.remove('flipped');
+                }, 4000);
+            });
+        });
 
 
 
